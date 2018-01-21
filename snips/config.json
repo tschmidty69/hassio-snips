@@ -36,5 +36,5 @@
     "speaker": "str",
     "assistant": "str"
   },
-  "image": "snipsdocker/platform:{arch}-0.51.14"
+  "image": "snipsdocker/platform:{arch}"
 }
