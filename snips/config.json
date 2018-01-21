@@ -36,5 +36,5 @@
     "speaker": "str",
     "assistant": "str"
   },
-  "image": "homeassistant/{arch}-addon-snips"
+  "image": "snipsdocker/{arch}-0.51.14"
 }
