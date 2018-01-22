@@ -20,7 +20,7 @@
       "user": "",
       "password": ""
     },
-    "mic": "0,0",
+    "mic": "1,0",
     "speaker": "0,0",
     "assistant": "assistant.zip"
   },

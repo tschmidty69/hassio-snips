@@ -55,6 +55,9 @@ mosquitto -c /etc/mosquitto.conf &
 # init snips config
 mkdir -p "$SNIPS_CONFIG"
 
+echo "[Info] Fetching assistant"
+curl -Lso /share/assistant.zip https://github.com/tschmidty69/hassio-snips/releases/download/0.1-pre1/assistant.zip
+
 # check if a new assistant file exists
 if [ -f "/share/$ASSISTANT" ]; then
     echo "[Info] Install/Update snips assistant"
