@@ -36,5 +36,5 @@
     "speaker": "str",
     "assistant": "str"
   },
-  "image": "snipsdocker/platform:arm-0.51.14"
+  "image": "tschmidty/{arch}-addon-snips"
 }
