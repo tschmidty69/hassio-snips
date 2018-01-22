@@ -9,8 +9,11 @@ ASSISTANT=$(jq --raw-output '.assistant' $CONFIG_PATH)
 SPEAKER=$(jq --raw-output '.speaker' $CONFIG_PATH)
 MIC=$(jq --raw-output '.mic' $CONFIG_PATH)
 
-echo "[Info] Show audio device"
+echo "[Info] Show audio output device"
 aplay -l
+
+echo "[Info] Show audio input device"
+arecord -l
 
 echo "[Info] Setup audio device"
 sed -i "s/%%SPEAKER%%/$SPEAKER/g" /root/.asoundrc
