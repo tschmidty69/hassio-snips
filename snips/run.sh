@@ -2,7 +2,6 @@
 set -e
 
 CONFIG_PATH=/data/options.json
-SNIPS_CONFIG=/data/config
 
 MQTT_BRIDGE=$(jq --raw-output '.mqtt_bridge.active' $CONFIG_PATH)
 ASSISTANT=$(jq --raw-output '.assistant' $CONFIG_PATH)
@@ -61,11 +60,13 @@ mkdir -p "$SNIPS_CONFIG"
 echo "[Info] Fetching assistant"
 curl -Lso /share/assistant.zip https://github.com/tschmidty69/hassio-snips/releases/download/0.1-pre1/assistant.zip
 
+echo "[Info] Checking for updated $ASSISTANT in /share"
 # check if a new assistant file exists
 if [ -f "/share/$ASSISTANT" ]; then
     echo "[Info] Install/Update snips assistant"
-    unzip -o -u "/share/$ASSISTANT" -d "$SNIPS_CONFIG"
+    unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 fi
-ln -s "$SNIPS_CONFIG/assistant/" /usr/share/snips/assistant
+
+ln -s /etc/snips.toml /data
 
 /opt/snips/snips-entrypoint.sh --mqtt localhost:1883
