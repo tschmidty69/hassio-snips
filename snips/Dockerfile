@@ -1,5 +1,6 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+#ARG BUILD_FROM
+#FROM $BUILD_FROM
+FROM snipsdocker/platform:x86-0.51.14
 
 # Copy data
 COPY run.sh /

@@ -15,15 +15,22 @@ echo "[INFO] Show audio input device"
 arecord -l
 
 echo "[INFO] Setup audio device"
-# check if a new asound.conf file exists
 if [ -f "/share/asound.conf" ]; then
-    echo "[INFO] Installing /share/asound.conf"
-    cp -v /share/asound.conf /etc
+    echo "[INFO] Installing /share/asoundrc"
+    cp -v /share/asoundrc /root/.asoundrc
 else
     echo "[INFO] Using default asound.conf"
-    cp /root/.asoundrc /etc/asound.conf
-    sed -i "s/%%SPEAKER%%/$SPEAKER/g" /etc/asound.conf
-    sed -i "s/%%MIC%%/$MIC/g" /etc/asound.conf
+    sed -i "s/%%SPEAKER%%/$SPEAKER/g" /root/.asoundrc
+    sed -i "s/%%MIC%%/$MIC/g" /root/.asoundrc
+fi
+
+echo "[DEBUG] Using /root/.asoundrc"
+cat /root/.asoundrc
+
+echo "[INFO] Checking for /share/snips.toml"
+if [ -f "/share/snips.toml" ]; then
+    echo "[INFO] Installing /share/snips.toml"
+    cp -v /share/snips.toml /etc/
 fi
 
 # mqtt bridge
