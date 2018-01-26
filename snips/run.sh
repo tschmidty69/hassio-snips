@@ -8,15 +8,23 @@ ASSISTANT=$(jq --raw-output '.assistant' $CONFIG_PATH)
 SPEAKER=$(jq --raw-output '.speaker' $CONFIG_PATH)
 MIC=$(jq --raw-output '.mic' $CONFIG_PATH)
 
-echo "[Info] Show audio output device"
+echo "[INFO] Show audio output device"
 aplay -l
 
-echo "[Info] Show audio input device"
+echo "[INFO] Show audio input device"
 arecord -l
 
-echo "[Info] Setup audio device"
-sed -i "s/%%SPEAKER%%/$SPEAKER/g" /root/.asoundrc
-sed -i "s/%%MIC%%/$MIC/g" /root/.asoundrc
+echo "[INFO] Setup audio device"
+# check if a new asound.conf file exists
+if [ -f "/share/asound.conf" ]; then
+    echo "[INFO] Installing /share/asound.conf"
+    cp -v /share/asound.conf /etc
+else
+    echo "[INFO] Using default asound.conf"
+    cp /root/.asoundrc /etc/asound.conf
+    sed -i "s/%%SPEAKER%%/$SPEAKER/g" /etc/asound.conf
+    sed -i "s/%%MIC%%/$MIC/g" /etc/asound.conf
+fi
 
 # mqtt bridge
 if [ "$MQTT_BRIDGE" == "true" ]; then
@@ -25,7 +33,7 @@ if [ "$MQTT_BRIDGE" == "true" ]; then
     USER=$(jq --raw-output '.mqtt_bridge.user' $CONFIG_PATH)
     PASSWORD=$(jq --raw-output '.mqtt_bridge.password' $CONFIG_PATH)
 
-    echo "[Info] Setup internal mqtt bridge"
+    echo "[INFO] Setup internal mqtt bridge"
 
     {
         echo "connection main-mqtt"
@@ -51,22 +59,14 @@ if [ "$MQTT_BRIDGE" == "true" ]; then
     } >> /etc/mosquitto.conf
 fi
 
-echo "[Info] Start internal mqtt broker"
+echo "[INFO] Start internal mqtt broker"
 mosquitto -c /etc/mosquitto.conf &
 
-# init snips config
-mkdir -p "$SNIPS_CONFIG"
-
-echo "[Info] Fetching assistant"
-curl -Lso /share/assistant.zip https://github.com/tschmidty69/hassio-snips/releases/download/0.1-pre1/assistant.zip
-
-echo "[Info] Checking for updated $ASSISTANT in /share"
+echo "[INFO] Checking for updated $ASSISTANT in /share"
 # check if a new assistant file exists
 if [ -f "/share/$ASSISTANT" ]; then
-    echo "[Info] Install/Update snips assistant"
+    echo "[INFO] Install/Update snips assistant"
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 fi
-
-ln -s /etc/snips.toml /data
 
 /opt/snips/snips-entrypoint.sh --mqtt localhost:1883
