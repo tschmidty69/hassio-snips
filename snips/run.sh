@@ -15,7 +15,7 @@ echo "[INFO] Show audio input device"
 arecord -l
 
 echo "[INFO] Setup audio device"
-if [ -f "/share/asound.conf" ]; then
+if [ -f "/share/asoundrc" ]; then
     echo "[INFO] Installing /share/asoundrc"
     cp -v /share/asoundrc /root/.asoundrc
 else
