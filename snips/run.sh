@@ -55,7 +55,6 @@ if [ "$MQTT_BRIDGE" == "true" ]; then
     fi
 
     {
-        echo "topic # OUT"
         echo "topic hermes/intent/# out"
         echo "topic hermes/hotword/toggleOn out"
         echo "topic hermes/hotword/toggleOff out"
