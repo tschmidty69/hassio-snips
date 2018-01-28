@@ -1,18 +1,17 @@
 pcm.!default {
   type asym
-  playback.pcm {
-    type plug
-    slave {
-      pcm "hw:0,0"
-    }
-  }
-  capture.pcm {
-    type plug
-    slave.pcm "hw:0,0"
+  capture.pcm "mic"
+  playback.pcm "speaker"
+}
+pcm.mic {
+  type plug
+  slave {
+    pcm "hw:1,0"
   }
 }
-
-ctl.!default {
-  type hw
-  card 1
+pcm.speaker {
+  type plug
+  slave {
+    pcm "hw:0,0"
+  }
 }
