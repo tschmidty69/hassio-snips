@@ -76,6 +76,7 @@ if [ -f "/share/$ASSISTANT" ]; then
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 fi
 
+echo "[INFO] Starting snips-watch"
 /usr/bin/snips-watch -vvv --no_color &
 
 /opt/snips/snips-entrypoint.sh --mqtt localhost:1883
