@@ -1,5 +1,6 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+#ARG BUILD_FROM
+#FROM $BUILD_FROM
+FROM tschmidty69/armhf-addon-snips
 
 # Copy data
 COPY run.sh /

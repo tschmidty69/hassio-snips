@@ -3,12 +3,12 @@ pcm.!default {
   playback.pcm {
     type plug
     slave {
-      pcm "%%SPEAKER%%"
+      pcm "hw:0,0"
     }
   }
   capture.pcm {
     type plug
-    slave.pcm "%%MIC%%"
+    slave.pcm "hw:0,0"
   }
 }
 
