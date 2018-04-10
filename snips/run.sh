@@ -61,6 +61,8 @@ if [ "$MQTT_BRIDGE" == "true" ]; then
         echo "topic hermes/asr/stopListening out"
         echo "topic hermes/asr/startListening out"
         echo "topic hermes/nlu/intentNotParsed out"
+        echo "topic hermes/audioServer/+/playBytes/# out"
+        echo "topic hermes/audioServer/+/playFinished out"
         echo "topic # IN hermes/"
     } >> /etc/mosquitto.conf
 fi
