@@ -61,8 +61,6 @@ if [ "$MQTT_BRIDGE" == "true" ]; then
         echo "topic hermes/asr/stopListening out"
         echo "topic hermes/asr/startListening out"
         echo "topic hermes/nlu/intentNotParsed out"
-        echo "topic hermes/audioServer/+/playBytes/# out"
-        echo "topic hermes/audioServer/+/playFinished out"
         echo "topic # IN hermes/"
     } >> /etc/mosquitto.conf
 fi
@@ -70,15 +68,19 @@ fi
 echo "[INFO] Start internal mqtt broker"
 mosquitto -c /etc/mosquitto.conf &
 
+
 echo "[INFO] Checking for updated $ASSISTANT in /share"
 # check if a new assistant file exists
 if [ -f "/share/$ASSISTANT" ]; then
     echo "[INFO] Install/Update snips assistant"
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
+# otherwise use the default 
+elif [ -f "/assistant-default.zip" ]; then
+    echo "[INFO] Using default snips assistant"
+    unzip -o -u "/assistant-default.zip" -d /usr/share/snips
 fi
 
-sleep 2
 echo "[INFO] Starting snips-watch"
-/usr/bin/snips-watch -vvv --no_color &
+( sleep 2; /usr/bin/snips-watch -vvv --no_color ) &
 
 /opt/snips/snips-entrypoint.sh --mqtt localhost:1883
