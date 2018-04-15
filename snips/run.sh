@@ -103,15 +103,11 @@ if [ -f "/share/$ASSISTANT" ]; then
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
 else
-    echo "[INFO] Trying to download default assistant"
-    curl https://github.com/tschmidty69/hass-snips-bundle-intents/releases/tag/default/assistant-Hass-$LANG.zip \
-        -o /share/assistant-Hass-$LANG.zip
-    if [ -f "/share/assistant-Hass-$LANG.zip" ]; then
+    if [ -f "/assistant-Hass-$LANG.zip" ]; then
         echo "[INFO] - Unzipping default Hass Snips assistant"
-        unzip -o -u "/share/assistant-Hass-$LANG.zip" -d /usr/share/snips
+        unzip -o -u "/assistant-Hass-$LANG.zip" -d /usr/share/snips
     else
-        echo "[ERROR] Could not download assistant " \
-             "from https://github.com/tschmidty69/hass-snips-bundle-intents/releases/tag/default/assistant-Hass-$LANG.zip"
+        echo "[ERROR] Could not find assistant /assistant-Hass-$LANG.zip"
     fi
 fi
 

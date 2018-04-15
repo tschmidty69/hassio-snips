@@ -22,6 +22,7 @@
     },
     "mic": "1,0",
     "speaker": "0,0",
+    "download_default_assistant": "true",
     "assistant": "assistant.zip",
     "language": "en-US",
     "custom_tts": "false",
