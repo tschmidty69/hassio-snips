@@ -7,7 +7,7 @@ MQTT_BRIDGE=$(jq --raw-output '.mqtt_bridge.active' $CONFIG_PATH)
 ASSISTANT=$(jq --raw-output '.assistant' $CONFIG_PATH)
 SPEAKER=$(jq --raw-output '.speaker' $CONFIG_PATH)
 MIC=$(jq --raw-output '.mic' $CONFIG_PATH)
-LANG=$(jq --raw-output '.language' $CONFIG_PATH)
+LANG=$(jq --raw-output '.language' $CONFIG_PATH| awk -F '-' '{print $1}')
 CUSTOMTTS=$(jq --raw-output '.custom_tts' $CONFIG_PATH)
 PLATFORM=$(jq --raw-output '.tts_platform' $CONFIG_PATH)
 
@@ -102,9 +102,17 @@ if [ -f "/share/$ASSISTANT" ]; then
     echo "[INFO] Install/Update snips assistant"
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
-elif [ -f "/assistant-default.zip" ]; then
-    echo "[INFO] Using default snips assistant"
-    unzip -o -u "/assistant-default.zip" -d /usr/share/snips
+else
+    echo "[INFO] Trying to download default assistant"
+    curl https://github.com/tschmidty69/hass-snips-bundle-intents/releases/tag/default/assistant-Hass-$LANG.zip \
+        -o /share/assistant-Hass-$LANG.zip
+    if [ -f "/share/assistant-Hass-$LANG.zip" ]; then
+        echo "[INFO] - Unzipping default Hass Snips assistant"
+        unzip -o -u "/share/assistant-Hass-$LANG.zip" -d /usr/share/snips
+    else
+        echo "[ERROR] Could not download assistant " \
+             "from https://github.com/tschmidty69/hass-snips-bundle-intents/releases/tag/default/assistant-Hass-$LANG.zip"
+    fi
 fi
 
 echo "[INFO] Starting snips-watch"
