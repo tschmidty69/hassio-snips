@@ -26,7 +26,8 @@
     "assistant": "assistant.zip",
     "language": "en-US",
     "custom_tts": "false",
-    "tts_platform": ""
+    "tts_platform": "",
+    "api_key": ""
   },
   "schema": {
     "mqtt_bridge": {
