@@ -15,7 +15,13 @@ if [ "$HOSTTYPE" == "x86_64" ]; then
 else
     ARCH="armhf"
 fi
+
+if [ "$LANG" = "" ]; then
+    LANG="en"
+fi
+
 echo "[INFO] ARCH: $ARCH"
+echo "[INFO] LANG: $LANG"
 
 echo "[INFO] Checking for /share/snips.toml"
 if [ -f "/share/snips.toml" ]; then
@@ -28,6 +34,7 @@ if [ "$CUSTOMTTS" == "true" ]; then
         echo "[ERROR] - platform must be set to use custom tts!"
     else
         echo "[INFO] - Using custom tts"
+        echo "provider = "customtts" >> /etc/snips.toml
         echo "customtts = { command = [\"/usr/bin/customtts.sh\", \"$API_KEY\" \"$PLATFORM\", \"%%OUTPUT_FILE%%\", \"$LANG\", \"%%TEXT%%\"] }" >> /etc/snips.toml
     fi
 else
@@ -82,7 +89,7 @@ if [ -f "/share/$ASSISTANT" ]; then
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
 else
-    if [ -f "/share/assistant_Hass_$LANG.zip" ]; then
+    if [ -f "/assistant_Hass_$LANG.zip" ]; then
         echo "[INFO] - Using default assistant_Hass_$LANG.zip"
         unzip -o -u "/shareassistant_Hass_$LANG.zip" -d /usr/share/snips
     else
