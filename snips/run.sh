@@ -35,7 +35,7 @@ if [ "$CUSTOMTTS" == "true" ]; then
     else
         echo "[INFO] - Using custom tts"
         echo "provider = \"customtts\"" >> /etc/snips.toml
-        echo "customtts = { command = [\"/usr/bin/customtts.sh\", \"$API_KEY\" \"$PLATFORM\", \"%%OUTPUT_FILE%%\", \"$LANG\", \"%%TEXT%%\"] }" >> /etc/snips.toml
+        echo "customtts = { command = [\"/usr/bin/customtts.sh\", \"$API_KEY\", \"$PLATFORM\", \"%%OUTPUT_FILE%%\", \"$LANG\", \"%%TEXT%%\"] }" >> /etc/snips.toml
     fi
 else
     echo "[INFO] - Using default tts (picotts)"
