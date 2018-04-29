@@ -88,7 +88,7 @@ else
     echo "[INFO] Checking for /assistant_Hass_$LANG.zip"
     if [ -f "/assistant_Hass_$LANG.zip" ]; then
         echo "[INFO] - Using default assistant_Hass_$LANG.zip"
-        unzip -o -u "/shareassistant_Hass_$LANG.zip" -d /usr/share/snips
+        unzip -o -u "/assistant_Hass_$LANG.zip" -d /usr/share/snips
     else
         echo "[ERROR] Could not find assistant!"
     fi
