@@ -19,25 +19,6 @@ else
 fi
 echo "[INFO] ARCH: $ARCH"
 
-echo "[INFO] Show audio output devices"
-aplay -l
-
-echo "[INFO] Show audio input devices"
-arecord -l
-
-echo "[INFO] Setup audio device"
-if [ -f "/share/asoundrc" ]; then
-    echo "[INFO] - Installing /share/asoundrc"
-    cp -v /share/asoundrc /root/.asoundrc
-else
-    echo "[INFO] - Using default asound.conf"
-    sed -i "s/%%SPEAKER%%/$SPEAKER/g" /root/.asoundrc
-    sed -i "s/%%MIC%%/$MIC/g" /root/.asoundrc
-fi
-
-echo "[DEBUG] Using /root/.asoundrc"
-cat /root/.asoundrc
-
 echo "[INFO] Checking for /share/snips.toml"
 if [ -f "/share/snips.toml" ]; then
     echo "[INFO] - Installing /share/snips.toml"
