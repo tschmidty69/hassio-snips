@@ -5,8 +5,6 @@ CONFIG_PATH=/data/options.json
 
 MQTT_BRIDGE=$(jq --raw-output '.mqtt_bridge.active' $CONFIG_PATH)
 ASSISTANT=$(jq --raw-output '.assistant' $CONFIG_PATH)
-SPEAKER=$(jq --raw-output '.speaker' $CONFIG_PATH)
-MIC=$(jq --raw-output '.mic' $CONFIG_PATH)
 LANG=$(jq --raw-output '.language' $CONFIG_PATH| awk -F '-' '{print $1}')
 CUSTOMTTS=$(jq --raw-output '.custom_tts' $CONFIG_PATH)
 PLATFORM=$(jq --raw-output '.tts_platform' $CONFIG_PATH)
@@ -84,9 +82,9 @@ if [ -f "/share/$ASSISTANT" ]; then
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
 else
-    if [ -f "/share/assistant-Hass-$LANG.zip" ]; then
-        echo "[INFO] - Using default assistant-Hass-$LANG.zip"
-        unzip -o -u "/shareassistant-Hass-$LANG.zip" -d /usr/share/snips
+    if [ -f "/share/assistant_Hass_$LANG.zip" ]; then
+        echo "[INFO] - Using default assistant_Hass_$LANG.zip"
+        unzip -o -u "/shareassistant_Hass_$LANG.zip" -d /usr/share/snips
     else
         echo "[ERROR] Could not find assistant!"
     fi

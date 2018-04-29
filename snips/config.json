@@ -20,7 +20,11 @@
       "user": "",
       "password": ""
     },
-    "assistant": "assistant.zip"
+    "assistant": "assistant.zip",
+    "language": "",
+    "custom_tts": "false",
+    "tts_platform": "amazon_polly",
+    "api_key": "api_key"
   },
   "schema": {
     "mqtt_bridge": {
