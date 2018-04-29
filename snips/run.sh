@@ -10,7 +10,7 @@ MIC=$(jq --raw-output '.mic' $CONFIG_PATH)
 LANG=$(jq --raw-output '.language' $CONFIG_PATH| awk -F '-' '{print $1}')
 CUSTOMTTS=$(jq --raw-output '.custom_tts' $CONFIG_PATH)
 PLATFORM=$(jq --raw-output '.tts_platform' $CONFIG_PATH)
-API_KEY=$(jq --raw-output '.api_key' $CONFIG_PATH)
+API_KEY=$(jq --raw-output '.api_key' // apikey $CONFIG_PATH)
 
 if [ "$HOSTTYPE" == "x86_64" ]; then
     ARCH="amd64"
@@ -44,7 +44,6 @@ if [ -f "/share/snips.toml" ]; then
     cp -v /share/snips.toml /etc/
 fi
 
-echo "[INFO] Checking for custom tts"
 if [ "$CUSTOMTTS" == "true" ]; then
     if [ -z "$PLATFORM" ]; then
         echo "[ERROR] - platform must be set to use custom tts!"
@@ -104,11 +103,11 @@ if [ -f "/share/$ASSISTANT" ]; then
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
 else
-    if [ -f "/assistant-Hass-$LANG.zip" ]; then
-        echo "[INFO] - Unzipping default Hass Snips assistant"
-        unzip -o -u "/assistant-Hass-$LANG.zip" -d /usr/share/snips
+    if [ -f "/share/assistant-Hass-$LANG.zip" ]; then
+        echo "[INFO] - Using default assistant-Hass-$LANG.zip"
+        unzip -o -u "/shareassistant-Hass-$LANG.zip" -d /usr/share/snips
     else
-        echo "[ERROR] Could not find assistant /assistant-Hass-$LANG.zip"
+        echo "[ERROR] Could not find assistant!"
     fi
 fi
 

@@ -1,6 +1,6 @@
 {
   "name": "Snips.AI",
-  "version": "0.53.17-1",
+  "version": "2.1",
   "slug": "snips",
   "description": "Local voice control platform",
   "url": "https://home-assistant.io/addons/snips/",
@@ -20,14 +20,7 @@
       "user": "",
       "password": ""
     },
-    "mic": "1,0",
-    "speaker": "0,0",
-    "download_default_assistant": "true",
-    "assistant": "assistant.zip",
-    "language": "en-US",
-    "custom_tts": "false",
-    "tts_platform": "",
-    "api_key": ""
+    "assistant": "assistant.zip"
   },
   "schema": {
     "mqtt_bridge": {
@@ -37,9 +30,7 @@
       "user": "str",
       "password": "str"
     },
-    "mic": "str",
-    "speaker": "str",
     "assistant": "str"
   },
-  "image": "tschmidty/{arch}-addon-snips"
+  "image": "homeassistant/{arch}-addon-snips"
 }

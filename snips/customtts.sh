@@ -6,16 +6,22 @@ FILE=$3
 LANG=$4
 TEXT=$5
 
-if [ -z "$LANG" || $LANG == "null" ]; then
-    LANG="en-US"
+MESSAGE="'{\"message\": \"$TEXT\", \"platform\": \"$PLATFORM\"}'"
+
+RESPONSE=$(eval curl -s -H \"x-ha-access: $API_KEY\" -H \"Type: application/json\" https://home.todschmidt.com/api/tts_get_url -d $MESSAGE)
+if [ "$RESPONSE" = "" ]; then
+    exit 1
 fi
 
-RESPONSE=`curl -s -H "x-ha-access: $API_KEY" -H "Type: application/json" http://hassio.local:8123/api/tts_get_url -d '{"message": "$TEXT", "platform": "$PLATFORM", "language": "$LANG"}'`
-echo $RESPONSE
 URL=`echo $RESPONSE | jq --raw-output '.url'`
+if [ "$URL" = "" ]; then
+    exit 1
+fi
 
-curl $URL -s -o /tmp/temp.mp3
-/usr/bin/mpg123 -w $FILE /tmp/temp.mp3
-
-#echo $URL
+rm /tmp/temp.mp3
+curl -s -H "x-ha-access: $API_KEY" "$URL" -s -o /tmp/temp.mp3
+if [ -f /tmp/temp.mp3 ]; then
+  /usr/bin/mpg123 -w $FILE /tmp/temp.mp3
+fi
+rm /tmp/temp.mp3
 
