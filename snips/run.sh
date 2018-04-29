@@ -34,7 +34,7 @@ if [ "$CUSTOMTTS" == "true" ]; then
         echo "[ERROR] - platform must be set to use custom tts!"
     else
         echo "[INFO] - Using custom tts"
-        echo "provider = \"customtts\" >> /etc/snips.toml
+        echo "provider = \"customtts\"" >> /etc/snips.toml
         echo "customtts = { command = [\"/usr/bin/customtts.sh\", \"$API_KEY\" \"$PLATFORM\", \"%%OUTPUT_FILE%%\", \"$LANG\", \"%%TEXT%%\"] }" >> /etc/snips.toml
     fi
 else
