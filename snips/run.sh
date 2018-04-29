@@ -16,10 +16,6 @@ else
     ARCH="armhf"
 fi
 
-if [ "$LANG" = "" ]; then
-    LANG="en"
-fi
-
 echo "[INFO] ARCH: $ARCH"
 echo "[INFO] LANG: $LANG"
 
@@ -89,6 +85,7 @@ if [ -f "/share/$ASSISTANT" ]; then
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
 else
+    echo "[INFO] Checking for /assistant_Hass_$LANG.zip"
     if [ -f "/assistant_Hass_$LANG.zip" ]; then
         echo "[INFO] - Using default assistant_Hass_$LANG.zip"
         unzip -o -u "/shareassistant_Hass_$LANG.zip" -d /usr/share/snips

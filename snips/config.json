@@ -21,7 +21,7 @@
       "password": ""
     },
     "assistant": "assistant.zip",
-    "language": "",
+    "language": "en",
     "custom_tts": "false",
     "tts_platform": "amazon_polly",
     "api_key": "api_key"
