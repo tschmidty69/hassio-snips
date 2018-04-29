@@ -8,7 +8,7 @@ TEXT=$5
 
 MESSAGE="'{\"message\": \"$TEXT\", \"platform\": \"$PLATFORM\"}'"
 
-RESPONSE=$(eval curl -s -H \"x-ha-access: $API_KEY\" -H \"Type: application/json\" https://home.todschmidt.com/api/tts_get_url -d $MESSAGE)
+RESPONSE=$(eval curl -s -H \"x-ha-access: $API_KEY\" -H \"Type: application/json\" http://localhost:8123/api/tts_get_url -d $MESSAGE)
 if [ "$RESPONSE" = "" ]; then
     exit 1
 fi
