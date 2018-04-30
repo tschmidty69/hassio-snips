@@ -82,12 +82,14 @@ echo "[INFO] Checking for updated $ASSISTANT in /share"
 # check if a new assistant file exists
 if [ -f "/share/$ASSISTANT" ]; then
     echo "[INFO] Install/Update snips assistant"
+    rm -rf /usr/share/snips/assistant
     unzip -o -u "/share/$ASSISTANT" -d /usr/share/snips
 # otherwise use the default 
 else
     echo "[INFO] Checking for /assistant_Hass_$LANG.zip"
     if [ -f "/assistant_Hass_$LANG.zip" ]; then
         echo "[INFO] - Using default assistant_Hass_$LANG.zip"
+        rm -rf /usr/share/snips/assistant
         unzip -o -u "/assistant_Hass_$LANG.zip" -d /usr/share/snips
     else
         echo "[ERROR] Could not find assistant!"
