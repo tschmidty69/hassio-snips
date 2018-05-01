@@ -23,7 +23,7 @@
     },
     "assistant": "assistant.zip",
     "language": "en",
-    "custom_tts": "false",
+    "custom_tts": false,
     "tts_platform": "amazon_polly"
   },
   "schema": {
