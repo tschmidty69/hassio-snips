@@ -1,11 +1,11 @@
 #!/bin/sh
 
 set -x
-API_KEY=$1
-PLATFORM=$2
-FILE=$3
-LANG=$4
-TEXT=$5
+API_KEY=$HASSIO_TOKEN
+PLATFORM=$1
+FILE=$2
+LANG=$3
+TEXT=$4
 
 MESSAGE="'{\"message\": \"$TEXT\", \"platform\": \"$PLATFORM\"}'"
 echo $MESSAGE

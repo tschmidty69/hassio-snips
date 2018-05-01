@@ -12,6 +12,7 @@
   },
   "map": ["share"],
   "audio": true,
+  "homeassistant_api": true,
   "options": {
     "mqtt_bridge": {
       "active": true,
@@ -23,8 +24,7 @@
     "assistant": "assistant.zip",
     "language": "en",
     "custom_tts": "false",
-    "tts_platform": "amazon_polly",
-    "api_key": "api_key"
+    "tts_platform": "amazon_polly"
   },
   "schema": {
     "mqtt_bridge": {
