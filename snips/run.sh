@@ -8,7 +8,6 @@ ASSISTANT=$(jq --raw-output '.assistant' $CONFIG_PATH)
 LANG=$(jq --raw-output '.language' $CONFIG_PATH| awk -F '-' '{print $1}')
 CUSTOMTTS=$(jq --raw-output '.custom_tts' $CONFIG_PATH)
 PLATFORM=$(jq --raw-output '.tts_platform' $CONFIG_PATH)
-API_KEY=$(jq --raw-output '.api_key' $CONFIG_PATH)
 
 if [ "$HOSTTYPE" == "x86_64" ]; then
     ARCH="amd64"
