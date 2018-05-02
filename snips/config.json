@@ -34,7 +34,11 @@
       "user": "str",
       "password": "str"
     },
-    "assistant": "str"
+    "assistant": "str",
+    "language": "str",
+    "custom_tts": "bool",
+    "tts_platform": "str"
+
   },
   "image": "tschmidty/{arch}-addon-snips"
 }
