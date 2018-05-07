@@ -1,6 +1,6 @@
 {
   "name": "Snips.AI",
-  "version": "2.1-9",
+  "version": "3.0",
   "slug": "snips",
   "description": "Local voice control platform",
   "url": "https://home-assistant.io/addons/snips/",
@@ -11,6 +11,7 @@
     "1883/tcp": 9898
   },
   "map": ["share"],
+  "tmpfs": "size=10m",
   "audio": true,
   "homeassistant_api": true,
   "options": {
@@ -37,11 +38,11 @@
       "password": "str"
     },
     "assistant": "str",
-    "language": "str",
+    "language": "match((?:en|de|fr))",
     "custom_tts": {
       "active": "bool",
       "platform": "string"
     }
   },
-  "image": "homeassitant/{arch}-addon-snips"
+  "image": "homeassistant/{arch}-addon-snips"
 }
