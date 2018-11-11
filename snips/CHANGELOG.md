@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.1
+- Updated to latest snisp 0.60.1
+
+## 4
+- Use new Hass.io Services API and cleanup config
+
+## 3.3
+- Updated to latest snips 0.58.3
+- NOTE: This version requires an updated assistant from the Snips Console.
+
+## 3.2
+- Added snips-asr-injections service to allow dynamic entity names
+
+## 3.1
+- Updated to latest snips version 0.56.4
+
 ## 3.0
 - Updated to snips version 0.55.2
 - Updated default assistant with additional languages
