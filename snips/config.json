@@ -28,5 +28,5 @@
       "platform": "str"
     }
   },
-  "image": "homeassistant/{arch}-addon-snips"
+  "image": "tschmidty/{arch}-addon-snips"
 }
