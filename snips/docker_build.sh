@@ -15,12 +15,11 @@ VERSION=$(grep version config.json  | grep -o '[0-9\.\-]*')
 BUILD_FROM=$(jq --raw-output ".build_from.${ARCH}" build.json)
 jq --raw-output ".build_from.$ARCH" build.json
 
-echo -e "#####################"
+echo -e "\n#####################"
 echo -e "# Building image    #"
 echo -e "#####################\n"
 
 echo "Building version $VERSION from $BUILD_FROM for $ARCH"
-exit
 docker build --build-arg BUILD_FROM=$BUILD_FROM .
 if [ "$?" -ne 0 ]; then
     echo "ERROR: Could not build image"
@@ -29,7 +28,7 @@ fi
 
 IMAGE=$(docker images | awk '{print $1}' | awk 'NR==2')
 
-echo -e "#####################"
+echo -e "\n#####################"
 echo -e "# Tagging image     #"
 echo -e "#####################\n"
 
