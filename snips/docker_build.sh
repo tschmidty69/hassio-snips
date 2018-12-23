@@ -19,7 +19,7 @@ echo -e "#####################"
 echo -e "# Building image    #"
 echo -e "#####################\n"
 
-echo "Building version $VERSION from $BUILD_FROM"
+echo "Building version $VERSION from $BUILD_FROM for $ARCH"
 exit
 docker build --build-arg BUILD_FROM=$BUILD_FROM .
 if [ "$?" -ne 0 ]; then
