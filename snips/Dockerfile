@@ -8,7 +8,7 @@ COPY customtts.sh /usr/bin
 
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt update \
-    && apt-get install -y dirmngr \
+    && apt-get install -y dirmngr apt-utils apt-transport-https \
     && bash -c  'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
     && apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849 \
     && apt update \
