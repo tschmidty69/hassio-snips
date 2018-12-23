@@ -26,7 +26,7 @@ if [ "$?" -ne 0 ]; then
     exit 1
 fi
 
-IMAGE=$(docker images | awk '{print $1}' | awk 'NR==2')
+IMAGE=$(docker images | awk '{print $3}' | awk 'NR==2')
 
 echo -e "\n#####################"
 echo -e "# Tagging image     #"
