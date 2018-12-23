@@ -9,7 +9,7 @@ COPY customtts.sh /usr/bin
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt update \
     && apt-get install -y dirmngr \
-    && bash -c  'echo "deb https://raspbian.snips.ai/$(lsb_release -cs) stable main" > /etc/apt/sources.list.d/snips.list' \
+    && bash -c  'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
     && apt-key adv --keyserver pgp.mit.edu --recv-keys D4F50CDCA10A2849 \
     && apt update \
     && apt install -y snips-platform-voice
