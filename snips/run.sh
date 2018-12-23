@@ -103,4 +103,4 @@ echo "[INFO] Starting snips-asr-injection"
 /usr/bin/snips-hotword --version
 /usr/bin/snips-nlu --version
 
-/opt/snips/snips-entrypoint.sh --mqtt localhost:1883
+/snips-entrypoint.sh --mqtt localhost:1883
