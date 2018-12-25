@@ -13,7 +13,8 @@ RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && bash -c  'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
     && apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849 \
     && apt update \
-    && apt install -y snips-platform-voice
+    && apt install -y snips-platform-voice \
+    && mkdir -pv /etc/supervisor/conf.d/
 
 RUN chmod a+x /run.sh \
     && chmod a+x /usr/bin/customtts.sh \
