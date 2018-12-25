@@ -9,8 +9,7 @@ COPY snips-entrypoint.sh /
 
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt update \
-    && apt-get install -y dirmngr apt-utils apt-transport-https jq unzip supervisor mpg123 curl tzdata \
-    &&  
+    && apt-get install -y dirmngr apt-utils apt-transport-https jq unzip supervisor mpg123 curl tzdata
 
 RUN if [ "$BUILD_FROM" = "ubuntu:xenial" ]; then bash -c 'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
         && apt-key adv --keyserver pgp.mit.edu --recv-keys D4F50CDCA10A2849; \
