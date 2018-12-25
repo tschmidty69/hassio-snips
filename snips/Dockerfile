@@ -12,6 +12,7 @@ RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt-get install -y dirmngr apt-utils apt-transport-https jq unzip supervisor mpg123 curl tzdata 
 
 RUN if [ "$BUILD_FROM" = "ubuntu:xenial" ]; then bash -c 'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
+        && echo "BUILD_FROM=$BUILD_FROM" \
         && apt-key adv --keyserver pgp.mit.edu --recv-keys F727C778CCB0A455; \
     else bash -c 'echo "deb https://debian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
         && apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849; \
