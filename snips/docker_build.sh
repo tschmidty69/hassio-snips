@@ -10,7 +10,12 @@ git add .
 git commit -a -m 'updated version'
 git push
 
-ARCH="armhf"
+UNAME=$(uname -p)
+if [ "$UNAME -eq "x86_64" ]; then
+    ARCH="amd64"
+else
+    ARCH="armhf"
+fi
 VERSION=$(grep version config.json  | grep -o '[0-9\.\-]*')
 BUILD_FROM=$(jq --raw-output ".build_from.${ARCH}" build.json)
 jq --raw-output ".build_from.$ARCH" build.json
