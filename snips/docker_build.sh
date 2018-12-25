@@ -41,3 +41,5 @@ docker push tschmidty/$ARCH-addon-snips:$VERSION
 docker tag $IMAGE tschmidty/armhf-addon-snips:latest
 docker push tschmidty/$ARCH-addon-snips:latest
 
+date
+
