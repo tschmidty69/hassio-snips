@@ -15,9 +15,9 @@ RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
 
 RUN echo "BUILD=$BUILD_FROM"
 RUN if [ "$BUILD_FROM" = "ubuntu:xenial" ]; then bash -c 'echo "deb https://debian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
-        && apt-key adv --keyserver pgp.mit.edu --recv-keys D4F50CDCA10A2849; \
+        && apt-key adv --keyserver pgp.mit.edu --recv-keys F727C778CCB0A455; \
     else bash -c 'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
-        && apt-key adv --keyserver pgp.surfnet.nl --recv-keys F727C778CCB0A455; \
+        && apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849; \
     fi
 
 RUN apt update \
