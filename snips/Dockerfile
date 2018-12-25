@@ -14,7 +14,6 @@ RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849 \
     && apt update \
     && apt install -y snips-platform-voice \
-    && mkdir -pv /etc/supervisor/conf.d/
 
 RUN chmod a+x /run.sh \
     && chmod a+x /usr/bin/customtts.sh \
