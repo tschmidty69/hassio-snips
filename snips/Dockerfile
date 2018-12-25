@@ -7,8 +7,7 @@ COPY mosquitto.conf /etc/
 COPY customtts.sh /usr/bin
 COPY snips-entrypoint.sh /
 
-ENV image=$BUILD_FROM
-RUN echo "Oh dang look at that $image"
+ARG BUILD_FROM
 
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt update \
