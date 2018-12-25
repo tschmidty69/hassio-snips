@@ -66,7 +66,6 @@ if MQTT_CONFIG="$(curl -s -f -H "X-Hassio-Key: ${HASSIO_TOKEN}" http://hassio/se
     ) >> /etc/mosquitto.conf
 else
     echo "[ERROR] No Hass.io mqtt service found!"
-    exit 1
 fi
 
 echo "[INFO] Start internal mqtt broker"
