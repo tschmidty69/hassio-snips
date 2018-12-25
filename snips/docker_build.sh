@@ -12,7 +12,7 @@ git push
 
 UNAME=$(uname -p)
 echo "UNAME=$UNAME"
-if [ "$UNAME" -eq "x86_64" ]; then
+if [ "$UNAME" == "x86_64" ]; then
     ARCH="amd64"
 else
     ARCH="armhf"
