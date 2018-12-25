@@ -16,6 +16,8 @@ if [ "$UNAME" -eq "x86_64" ]; then
 else
     ARCH="armhf"
 fi
+echo "UNAME=$UNMAE"
+
 VERSION=$(grep version config.json  | grep -o '[0-9\.\-]*')
 BUILD_FROM=$(jq --raw-output ".build_from.${ARCH}" build.json)
 jq --raw-output ".build_from.$ARCH" build.json
