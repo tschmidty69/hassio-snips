@@ -97,4 +97,10 @@ echo "[INFO] Starting snips-watch"
 echo "[INFO] Starting snips-asr-injection"
 ( sleep 2; /usr/bin/snips-asr-injection -v --no_color ) &
 
-/opt/snips/snips-entrypoint.sh --mqtt localhost:1883
+/usr/bin/snips-asr --version
+/usr/bin/snips-audio-server --version
+/usr/bin/snips-dialogue --version
+/usr/bin/snips-hotword --version
+/usr/bin/snips-nlu --version
+
+/snips-entrypoint.sh --mqtt localhost:1883
