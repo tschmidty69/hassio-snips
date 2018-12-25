@@ -11,7 +11,7 @@ git commit -a -m 'updated version'
 git push
 
 UNAME=$(uname -p)
-if [ "$UNAME -eq "x86_64" ]; then
+if [ "$UNAME" -eq "x86_64" ]; then
     ARCH="amd64"
 else
     ARCH="armhf"
