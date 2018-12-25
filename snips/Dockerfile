@@ -10,9 +10,12 @@ COPY snips-entrypoint.sh /
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf \
     && apt update \
     && apt-get install -y dirmngr apt-utils apt-transport-https jq unzip supervisor \
-                          mpg123 curl tzdata \
-    && bash -c  'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list' \
-    && apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849 \
+                          mpg123 curl tzdata 
+
+RUN if [ "$BUILD_FROM" = "raspbian/stretch:latest"; then bash -c 'echo "deb https://raspbian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list'; \
+    else bash -c 'echo "deb https://debian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list'; fi
+
+RUN apt-key adv --keyserver pgp.surfnet.nl --recv-keys D4F50CDCA10A2849 \
     && apt update \
     && apt install -y snips-platform-voice \
     && chmod a+x /run.sh \
