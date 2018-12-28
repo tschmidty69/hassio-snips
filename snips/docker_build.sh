@@ -45,7 +45,7 @@ echo "Built $IMAGE"
 docker tag $IMAGE tschmidty/$ARCH-addon-snips:$VERSION
 docker push tschmidty/$ARCH-addon-snips:$VERSION
 
-docker tag $IMAGE tschmidty/armhf-addon-snips:latest
+docker tag $IMAGE tschmidty/$ARCH-addon-snips:latest
 docker push tschmidty/$ARCH-addon-snips:latest
 
 date
