@@ -1,6 +1,6 @@
 {
   "build_from": {
-    "armhf": "raspbian/stretch:latest",
-    "amd64": "ubuntu:xenial"
+    "armhf": "hassioaddons/ubuntu-base-armhf",
+    "amd64": "hassioaddons/ubuntu-base-amd64"
   }
 }
