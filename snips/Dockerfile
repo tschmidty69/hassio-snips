@@ -20,7 +20,7 @@ RUN if [ "$BUILD_FROM" = "ubuntu:xenial" ]; then bash -c 'echo "deb https://debi
     fi
 
 RUN apt update \
-    && apt install -y snips-platform-voice \
+    && apt install -y snips-platform-voice snips-asr \
     && chmod a+x /run.sh \
     && chmod a+x /usr/bin/customtts.sh \
     && chmod a+x /snips-entrypoint.sh \
